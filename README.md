@@ -1,1 +1,1 @@
-** Javascript example project
+**Javascript example project
