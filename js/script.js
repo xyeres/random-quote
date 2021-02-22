@@ -18,7 +18,7 @@ const quotes = [
     'source': 'Bill Gates',
     'year': null,
     'citation': 'Speech',
-    'tags': ['humor']
+    'tags': null
   },
   {
     'quote': 'DNA is like a computer program but far, far more advanced than any software ever created.',
@@ -47,7 +47,30 @@ const quotes = [
     'year': null,
     'citation': null,
     'tags': ['inspirational']
+  },
+  {
+    'quote': 'Everyone should be able to do one card trick, tell two jokes, and recite three poems, in case they are ever trapped in an elevator.',
+    'source': 'Lemony Snicket',
+    'year': 2007,
+    'citation': 'Horseradish',
+    'tags': ['funny']
+  },
+  {
+    'quote': 'Once you can accept the universe as matter expanding into nothing that is something, wearing stripes with plaid comes easy.',
+    'source': 'Einstein',
+    'year': null,
+    'citation': null,
+    'tags': ['inspirational', 'humor', 'funny']
+  },
+  {
+    'quote': 'If a book about failures doesn\'t sell, is it a success?',
+    'source': 'Jerry Seinfeld',
+    'year': null,
+    'citation': null,
+    'tags': ['funny', 'humor']
   }
+
+  
 ];
 
 /***
@@ -58,6 +81,17 @@ function diceRoll(sides) {
   return randomNum;
 }
 
+/***
+ * `genBackgroundColor` generates a random RGB value for css color properties and
+ * returns it as a string in the format: 'rgb(xxx, xxx, xxx)'
+***/
+
+function genBackgroundColor() {
+  r = Math.floor(Math.random() * 256) + 56;
+  g = Math.floor(Math.random() * 256) + 76;
+  b = Math.floor(Math.random() * 256) + 26;
+  return `rgb(${r}, ${g}, ${b})`;
+}
 
 /***
  * `getRandomQuote` function
@@ -105,11 +139,14 @@ function printQuote() {
   // set the innerhtml of the quote-box to the html string
   document.getElementById('quote-box').innerHTML = html;
   
+  // set background color of page using our niffty function
+  document.body.style.backgroundColor = genBackgroundColor();
   // return success
   return 1;
 }
 
-
+// Setup interval to 3 seconds so that the quotes just keep on comin!
+setInterval(printQuote, 3000);
 
 /***
  * click event listener for the print quote button
