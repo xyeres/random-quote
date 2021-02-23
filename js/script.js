@@ -76,6 +76,7 @@ const quotes = [
 /***
  * `diceRoll` takes an integer as it's sole parameter and returns a random number between 1 and the integer
 ***/
+
 function diceRoll(sides) {
   let randomNum = Math.floor(Math.random() * sides);
   return randomNum;
