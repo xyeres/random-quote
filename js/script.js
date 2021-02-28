@@ -9,7 +9,7 @@ project 1 - A Random Quote Generator
 
 /*** 
  * `quotes` array 
-***/
+ ***/
 const autoPlayBtn = document.getElementById('auto-play');
 const quotes = [
 
@@ -70,12 +70,12 @@ const quotes = [
     'tags': ['funny', 'humor']
   }
 
-  
+
 ];
 
 /***
  * `diceRoll` takes an integer as it's sole parameter and returns a random number between 1 and the integer
-***/
+ ***/
 
 function diceRoll(sides) {
   let randomNum = Math.floor(Math.random() * sides);
@@ -85,7 +85,7 @@ function diceRoll(sides) {
 /***
  * `genBackgroundColor` generates a random RGB value for css color properties and
  * returns it as a string in the format: 'rgb(xxx, xxx, xxx)'
-***/
+ ***/
 
 function genBackgroundColor() {
   r = Math.floor(Math.random() * 256) + 56;
@@ -97,7 +97,7 @@ function genBackgroundColor() {
 /***
  * `getRandomQuote` function
  * returns a random quote by passing diceRoll to the index bracket of quotes
-***/
+ ***/
 
 function getRandomQuote() {
   return quotes[diceRoll(quotes.length)];
@@ -106,14 +106,14 @@ function getRandomQuote() {
 
 /***
  * `printQuote` function generates a 
-***/
+ ***/
 
 function printQuote() {
   // grab a random quote using the awesome function we made earlier
   let quote = getRandomQuote();
   // every quote has a quote and a source so count on that 
   // and add them to the html
-  
+
   let html = `
       <p class="quote"> ${quote['quote']} </p>
       <p class="source"> ${quote['source']}`;
@@ -131,15 +131,16 @@ function printQuote() {
   if (quote['tags']) {
     let tags = quote['tags'];
     tags.forEach((item, index, array) => {
-        html += ` | <em>${item}</em>`;
+      html += ` | <em>${item}</em>`;
     });
   };
+
   // append closing p tag
   html += '</p>';
 
   // set the innerhtml of the quote-box to the html string
   document.getElementById('quote-box').innerHTML = html;
-  
+
   // set background color of page using our niffty function
   document.body.style.backgroundColor = genBackgroundColor();
   // return success
@@ -165,6 +166,6 @@ autoPlayBtn.addEventListener('click', () => {
 /***
  * click event listener for the print quote button
  * DO NOT CHANGE THE CODE BELOW!!
-***/
+ ***/
 
 document.getElementById('load-quote').addEventListener("click", printQuote, false);
