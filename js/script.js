@@ -10,7 +10,7 @@ project 1 - A Random Quote Generator
 /*** 
  * `quotes` array 
 ***/
-
+const autoPlayBtn = document.getElementById('auto-play');
 const quotes = [
 
   {
@@ -146,8 +146,21 @@ function printQuote() {
   return 1;
 }
 
+// Give play button an event handler
 // Setup interval to 3 seconds so that the quotes just keep on comin!
-setInterval(printQuote, 3000);
+let intervalID;
+
+autoPlayBtn.addEventListener('click', () => {
+  if (intervalID) {
+    clearInterval(intervalID);
+    autoPlayBtn.textContent = 'Turn auto play on'
+    intervalID = false;
+  } else {
+    intervalID = setInterval(printQuote, 2500);
+    autoPlayBtn.textContent = 'Turn auto play off'
+    printQuote();
+  }
+});
 
 /***
  * click event listener for the print quote button
