@@ -157,7 +157,7 @@ autoPlayBtn.addEventListener('click', () => {
     autoPlayBtn.textContent = 'Turn auto play on'
     intervalID = false;
   } else {
-    intervalID = setInterval(printQuote, 2500);
+    intervalID = setInterval(printQuote, 10000);
     autoPlayBtn.textContent = 'Turn auto play off'
     printQuote();
   }
